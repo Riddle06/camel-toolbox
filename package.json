@@ -11,6 +11,15 @@
     "build": "node_modules/typescript/bin/tsc",
     "start": "npm run build && node ./dist"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Riddle06/camel-toolbox.git"
+  },
+  "keywords": [
+    "formatter",
+    "type-checker",
+    "id-generator"
+  ],
   "author": "riddle06",
   "license": "MIT",
   "dependencies": {
