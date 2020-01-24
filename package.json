@@ -1,0 +1,30 @@
+{
+  "name": "camel-toolbox",
+  "version": "1.0.0",
+  "description": "toolbox for development",
+  "main": "./dist/index.js",
+  "scripts": {
+    "clean": "rm -rf dist",
+    "init": "mkdir dist",
+    "prepublish": "npm run build",
+    "prebuild": "npm run clean && npm run init",
+    "build": "node_modules/typescript/bin/tsc",
+    "start": "npm run build && node ./dist"
+  },
+  "author": "riddle06",
+  "license": "MIT",
+  "dependencies": {
+    "@types/luxon": "^1.11.0",
+    "@types/node-rsa": "^1.0.0",
+    "@types/shortid": "0.0.29",
+    "@types/uuid": "^3.4.4",
+    "@types/uuid-validate": "0.0.1",
+    "comma-number": " ^2.0.1",
+    "luxon": "^1.11.2",
+    "node-rsa": "^1.0.7",
+    "shortid": "^2.2.14",
+    "typescript": "^3.5.3",
+    "uuid": "^3.3.2",
+    "uuid-validate": "0.0.3"
+  }
+}
