@@ -95,6 +95,111 @@ class Format {
 
         return `+${callingCode}${mobile}`
     }
+
+    tryGetInteger(num: unknown, defaultValue: number | null = null): number {
+
+        if (typeof num === "string") {
+            const parsedNumber = parseInt(num);
+
+            if (isNaN(parsedNumber)) {
+                return defaultValue
+            } else {
+                return parsedNumber;
+            }
+        }
+
+        if (typeof num === "number") {
+            return Math.floor(num)
+        }
+
+
+        return defaultValue
+    }
+
+    tryGetNumber(num: unknown, defaultValue: number | null = null): number {
+
+        if (typeof num === "string") {
+            const parsedNumber = parseFloat(num);
+
+            if (isNaN(parsedNumber)) {
+                return defaultValue
+            } else {
+                return parsedNumber;
+            }
+        }
+
+        if (typeof num === "number") {
+            return num
+        }
+
+
+        return defaultValue
+    }
+
+
+    tryGetDate(date: unknown, defaultValue: Date | null = null): Date {
+
+        if (date instanceof Date) {
+            return date;
+        }
+
+        if (typeof date === "string") {
+            const formatToSecondsLuxon = luxon.DateTime.fromFormat(date, "yyyy-MM-dd HH:mm:ss");
+
+            if (formatToSecondsLuxon.isValid) {
+                return formatToSecondsLuxon.toJSDate();
+            }
+
+            const ISOLuxon = luxon.DateTime.fromISO(date);
+
+            if (ISOLuxon.isValid) {
+                return ISOLuxon.toJSDate();
+            }
+
+            const formatToMinuteLuxon = luxon.DateTime.fromFormat(date, "yyyy-MM-dd HH:mm");
+
+            if (formatToMinuteLuxon.isValid) {
+                return formatToMinuteLuxon.toJSDate();
+            }
+        }
+
+        return defaultValue
+    }
+
+    tryGetString(num: unknown, defaultValue: string | null = null): string {
+
+        if (typeof num === "string") {
+            return num;
+        }
+
+        if (typeof num === "number") {
+            return num.toString();
+        }
+
+        if (Array.isArray(num)) {
+            return num.join(",")
+        }
+
+        return defaultValue;
+    }
+    
+    tryGetBoolean(value: unknown, defaultValue: boolean | null = null) {
+        switch (value) {
+            case true:
+            case "true":
+            case 1:
+            case "1":
+                return true;
+
+            case false:
+            case "false":
+            case 0:
+            case "0":
+                return false;
+            default:
+                return defaultValue;
+        }
+    }
 }
 
 export const formatter = new Format();

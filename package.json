@@ -1,6 +1,6 @@
 {
   "name": "camel-toolbox",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "toolbox for development",
   "main": "./dist/index.js",
   "scripts": {
@@ -18,7 +18,8 @@
   "keywords": [
     "formatter",
     "type-checker",
-    "id-generator"
+    "id-generator",
+    "crypto"
   ],
   "author": "riddle06",
   "license": "MIT",
